@@ -26,8 +26,8 @@ public class PaymentService {
     }
 
     @Transactional
-    public void confirmPayment(Long bookingId) {
-        Payment payment = paymentRepository.findByOrderId(bookingId);
+    public void confirmPayment(Long orderId) {
+        Payment payment = paymentRepository.findByOrderId(orderId);
         if (payment != null) {
             payment.setStatus(PaymentStatus.COMPLETED);
             paymentRepository.save(payment);
